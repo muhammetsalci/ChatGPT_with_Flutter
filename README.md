@@ -1,10 +1,8 @@
 # chatgpt_with_flutter
 
-A new Flutter project.
+ChatGPT with Flutter
 
-
-
-<img src = "https://raw.githubusercontent.com/muhammetsalci/assets/aa7c1c0f57d9fcb8e7f5444b4e5dfce3e9069182/resim_2023-01-22_001442126.png?token=GHSAT0AAAAAAB4ZNRXQADXOSQJGQCSYSYLWY6MLILQ" width="300"/></a>
+<img width="300" alt="chatpgt_with_flutter" src="https://user-images.githubusercontent.com/102540491/213888042-9bc88be8-f9fb-43b5-a768-6f8dbda65e11.png">
 
 ## Getting Started
 
@@ -18,3 +16,4 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
