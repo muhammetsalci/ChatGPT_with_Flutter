@@ -1,5 +1,6 @@
 import 'dart:async';
 
+//import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
 import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
 import 'package:chatgpt_with_flutter/threedots.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
   final List<ChatMessage> _messages = [];
-  ChatGPT? chatGPT;
+  OpenAI? chatGPT;
   StreamSubscription? _subscription;
   bool _isTyping = false;
     final Color botColor = Color(0xff444654);
@@ -27,7 +28,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-    chatGPT = ChatGPT.instance;
+    chatGPT = OpenAI.instance;
   }
 
   @override
@@ -122,7 +123,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     _controller.clear();
 
-    final request = CompleteReq(
+    /* final request = CompleteReq(
       prompt: message.text+"?",
       model: kTranslateModelV3,
       max_tokens: 4000,
@@ -130,10 +131,14 @@ class _ChatScreenState extends State<ChatScreen> {
       top_p: 1,
       frequency_penalty: 0.0,
       presence_penalty: 0.6,
-    );
-    _subscription = chatGPT
-        ?.builder(apiSecretKey,
-            orgId: "", baseOption: HttpSetup(receiveTimeout: 100000))
+    ); */
+    final request = CompleteText(
+        prompt: translateEngToThai(word: message.text.toString()),
+        maxTokens: 200,
+        model: kTranslateModelV3);
+    _subscription = OpenAI.instance
+        .build(token: apiSecretKey,
+            baseOption: HttpSetup(receiveTimeout: 100000))
         .onCompleteStream(request: request)
         .listen((response) {
       Vx.log(response!.choices[0].text);
